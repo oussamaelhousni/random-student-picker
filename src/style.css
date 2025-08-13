@@ -1,0 +1,172 @@
+:root {
+  --accent: #2563eb;
+  --glass: rgba(0, 0, 0, 0.45);
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --err: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+    sans-serif;
+}
+
+/* Fullscreen stage */
+video,
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* fill screen like camera app */
+  touch-action: manipulation;
+}
+
+/* Overlay UI */
+.ui {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  pointer-events: none;
+}
+.ui > * {
+  pointer-events: auto;
+}
+.ui .left,
+.ui .right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--glass);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  font-weight: 600;
+}
+button.primary {
+  background: var(--accent);
+}
+button:active {
+  transform: translateY(1px);
+}
+
+.slider {
+  color: #fff;
+  background: var(--glass);
+  padding: 8px 12px;
+  border-radius: 999px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.slider input[type="range"] {
+  width: 140px;
+}
+
+.status,
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+}
+.status {
+  bottom: 14px;
+  background: var(--glass);
+}
+.toast {
+  top: 60px;
+  background: var(--glass);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.toast.show {
+  opacity: 1;
+}
+
+/* Spotlight modal */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.spotlight.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.spotlight-card {
+  width: min(90vw, 520px);
+  background: rgba(18, 18, 18, 0.8);
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transform: scale(0.92);
+  opacity: 0;
+  animation: popIn 0.35s ease forwards;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.spotlight-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: cover;
+}
+.spotlight-text {
+  padding: 14px 16px 6px 16px;
+}
+.spotlight-text h2 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+}
+.spotlight-text p {
+  margin: 0 0 12px 0;
+  color: #d1d5db;
+}
+.close {
+  width: calc(100% - 16px);
+  margin: 0 8px 10px 8px;
+  border-radius: 12px;
+  background: var(--accent);
+}
+
+/* Optional halo around chosen box on the live view */

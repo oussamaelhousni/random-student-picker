@@ -1,0 +1,22 @@
+{
+  "name": "tfjs-live-detect",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.15.4",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.22.0"
+  }
+}

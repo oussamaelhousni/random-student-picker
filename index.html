@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Random Student Picker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="canvas"></canvas>
+
+    <!-- Minimal overlay UI -->
+    <div class="ui">
+      <div class="left">
+        <button id="fs">Fullscreen</button>
+        <button id="flip">Flip Cam</button>
+        <label class="slider">
+          Confidence <span id="confv">0.5</span>
+          <input
+            id="conf"
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value="0.5"
+          />
+        </label>
+      </div>
+      <div class="right">
+        <button id="pick" class="primary">Pick Random Student</button>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <div id="status" class="status">Loading…</div>
+
+    <!-- Selected student spotlight -->
+    <div id="spotlight" class="spotlight" aria-hidden="true">
+      <div class="spotlight-card">
+        <img id="spotImg" alt="Selected student snapshot" />
+        <div class="spotlight-text">
+          <h2>🎉 Selected Student</h2>
+          <p id="spotCaption">Ready to answer the next question!</p>
+        </div>
+        <button id="spotClose" class="close">Close</button>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
